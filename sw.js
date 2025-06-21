@@ -19,7 +19,7 @@ const SECURITY_HEADERS = {
 const urlsToCache = [
   '/',
   '/index.html',
-  '/css/styles.css',
+  '/css/style.css',
   '/js/main.js',
   '/manifest.json'
 ];

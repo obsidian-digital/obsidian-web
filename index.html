@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://kit.fontawesome.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://kit.fontawesome.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://kit.fontawesome.com;
+  img-src 'self' data: https:;
+  connect-src 'self' https://api.emailjs.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+">
+    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+<meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
     
     <!-- SEO Meta Tags -->
     <title>Obsidian Digital - Diseño Web Profesional | Desarrollo Web Internacional</title>
@@ -161,7 +175,7 @@
     </script>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Header/Navigation -->
@@ -169,7 +183,7 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <img src="code-infinity-enhanced-logo.svg" alt="Obsidian Digital Logo" class="logo">
+                    <img src="assets/code-infinity-enhanced-logo.svg" alt="Obsidian Digital Logo" class="logo">
                     <span class="brand-name">Obsidian Digital</span>
                 </div>
                 <div class="nav-menu" id="nav-menu">
@@ -713,7 +727,7 @@ sea exactamente lo que necesitas.
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="code-infinity-enhanced-logo.svg" alt="Obsidian Digital Logo" class="logo">
+                        <img src="assets/code-infinity-enhanced-logo.svg" alt="Obsidian Digital Logo" class="logo">
                         <span class="brand-name">Obsidian Digital</span>
                     </div>
                     <p class="footer-description">
@@ -942,5 +956,26 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
 });
     </script>
+    <script>
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  navigator.serviceWorker.register('/obsidian-web/sw.js', {
+    scope: '/obsidian-web/'
+  }).then(registration => {
+    console.log('✅ Service Worker registrado:', registration);
+    
+    // Actualizar SW automáticamente si hay nueva versión
+    registration.addEventListener('updatefound', () => {
+      console.log('🔄 Nueva versión del SW encontrada');
+    });
+  }).catch(error => {
+    console.error('❌ Error al registrar el Service Worker:', error);
+  });
+} else {
+  console.warn('⚠️ Service Worker no disponible o no HTTPS');
+}
+</script>
+
+<script src="js/security.js"></script>
+
 </body>
 </html>
